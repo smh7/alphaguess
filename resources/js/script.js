@@ -1,5 +1,5 @@
 /* RULES
-- Player must guess a number between a min and max
+- Player must guess a letter between a min and max
 - Player gets 5 guesses
 - Notify player of guesses remaining
 - Notify player the correct answer if they lose
@@ -13,9 +13,11 @@ let   min = 1,
       max = 10,
       minA = "A",
       maxA = "Z",
+      letterChosen,
       //winningNum = getRandomNum(min, max),
-      winingLetter = randLetter(),
-      //winningLetter = "R",
+      winningLetter = randLetter(letterChosen),
+      // winningLetter = "R",
+      letterWin,
       guessesLeft = 5,
       guessedAlready = [];
 
@@ -39,24 +41,26 @@ maxAlpha.textContent = maxA;
 // Listen for Guess
 guessBtn.addEventListener('click', function(){
       //e.preventDefault();
-      let guess = parseInt(guessInput.value);
-      //console.log(guess);
+      let guess = guessInput.value;
+      //guess = guess.toUpperCase;
+      console.log(guess);
+      // debugger;
       // Validate
       // VALIDATION not working Monday Morning
-      if(isNaN(guess) || guess < min || guess > max){
-            setMessage(`Please enter a number between ${min} and ${max}`, 'red');
+      if(isNaN(guess) || guess < minA || guess > maxA){
+            setMessage(`Please enter a letter between ${minA} and ${maxA}`, 'red');
       }
 
       // CHECK IF WON
-      if(guess === winningNum){
+      if(guess === winningLetter){
             
             // Disable input
             //guess.guessInput.disabled = true;
             // Change border color
-            guessInput.style.borderColor = 'green';
+            // guessInput.style.borderColor = 'green';
             // Declare won
             //setMessage("you won", 'green');
-            setMessage(`${winningNum} is correct, you win!`, 'green');
+            setMessage(`${winningLetter} is correct, you win!`, 'green');
 
       } else if(guessesLeft > 1){
             setMessage("try again, " + guessesLeft + " guesses left.", 'blue');
@@ -82,16 +86,17 @@ resetBtn.addEventListener('click', function(){
 
 });
 
-// GENERATE COMPUTER"s GUESS
-function getRandomNum(min, max){
-      return Math.floor(Math.random()*(max-min+1)+min);
-    }
+// // GENERATE COMPUTER"s GUESS
+// function getRandomNum(min, max){
+//       return Math.floor(Math.random()*(max-min+1)+min);
+//     }
 
 // GENERATE COMPUTER's ALPHA GUESS
-function randLetter() {
+function randLetter(letter) {
       var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
       var letter = letters[Math.floor(Math.random() * letters.length)];
-      return letter
+      letter = letter.toUpperCase();
+      return letter;
       console.log(letter);
     }
     
