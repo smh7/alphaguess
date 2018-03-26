@@ -19,8 +19,6 @@ let   min = 1,
       guessesLeft = 5,
       guessedAlready = [];
 
-
-
 // UI ELEMNENTS
 const game = document.querySelector('#game'),
       // minNum = document.querySelector('.min-num'),
@@ -35,8 +33,8 @@ const game = document.querySelector('#game'),
       resetBtn = document.querySelector('#reset-btn');
 
 // ASSIGN UI MIN & MAX
-minNum.textContent = minA;
-maxNum.textContent = maxA;
+minAlpha.textContent = minA;
+maxAlpha.textContent = maxA;
 
 // Listen for Guess
 guessBtn.addEventListener('click', function(){
